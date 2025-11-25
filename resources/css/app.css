@@ -1,0 +1,851 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==============================
+   全体レイアウト共通
+   ============================== */
+
+body {
+  background-color: #f3f4f6;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* 学習系ページのベース */
+
+.study-page {
+  padding: 2rem 1rem;
+}
+
+.study-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* セクション */
+
+.study-section {
+  margin-top: 2rem;
+}
+
+.mi-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.mi-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.mi-section-caption {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* ==============================
+   共通ヘッダー（PC 基本形）
+============================== */
+
+.app-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.app-header__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.app-header__left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1 1 auto;
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+.app-logo__mark {
+  background-color: #2563eb;
+  color: #ffffff;
+  width: 34px;
+  height: 34px;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-logo__texts {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.app-logo__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.app-logo__subtitle {
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+/* PC ナビゲーション */
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-nav__link {
+  text-decoration: none;
+  color: #374151;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.5rem;
+  transition: 0.15s ease;
+}
+
+.app-nav__link--active {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.app-nav__link:not(.app-nav__link--active):hover {
+  background-color: #f3f4f6;
+}
+
+/* 右側のユーザーメニュー */
+
+.app-header__right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.app-user {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.app-user__initial {
+  background-color: #2563eb;
+  color: #ffffff;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-user__info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.app-user__name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.app-user__email {
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+/* ページヘッダー（ダッシュボードなど） */
+
+.study-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.study-header__texts {
+  flex: 1 1 60%;
+}
+
+.study-header__title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.study-header__subtitle {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.study-header__period {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.study-header__summary {
+  flex: 0 0 220px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* すでにある .app-nav はデスクトップ用として再利用 */
+
+.app-nav--desktop {
+  display: inline-flex;
+}
+
+/* モバイル用トグルボタン（ハンバーガー） */
+
+.app-header__menu-toggle {
+  display: none; /* PCでは非表示、モバイルで表示 */
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  padding: 0;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.app-header__menu-line {
+  display: block;
+  width: 16px;
+  height: 2px;
+  border-radius: 9999px;
+  background-color: #111827;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.app-header__menu-line + .app-header__menu-line {
+  margin-top: 3px;
+}
+
+/* 開いているときのアニメーション */
+
+.app-header__menu-line--top-open {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.app-header__menu-line--middle-open {
+  opacity: 0;
+}
+
+.app-header__menu-line--bottom-open {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* モバイルナビ本体 */
+
+.app-mobile-nav {
+  border-top: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
+
+.app-mobile-nav__links {
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem 1rem;
+}
+
+.app-mobile-nav__link {
+  padding: 0.5rem 0.4rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #374151;
+  border-radius: 0.5rem;
+}
+
+.app-mobile-nav__link--active {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.app-mobile-nav__link:not(.app-mobile-nav__link--active):hover {
+  background-color: #f3f4f6;
+}
+
+/* モバイルナビのトランジション */
+
+.app-mobile-nav-enter-active,
+.app-mobile-nav-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.app-mobile-nav-enter-from,
+.app-mobile-nav-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+/* ==============================
+   レスポンシブ調整（ヘッダー）
+   ============================== */
+
+@media (max-width: 900px) {
+  .app-header__inner {
+    padding-inline: 0.75rem;
+  }
+
+  /* デスクトップ用ナビを隠す */
+  .app-nav--desktop {
+    display: none;
+  }
+
+  /* ハンバーガー表示 */
+  .app-header__menu-toggle {
+    display: inline-flex;
+  }
+
+  /* ロゴとハンバーガーの間を詰める */
+  .app-header__left {
+    gap: 0.75rem;
+  }
+
+  .app-subheader__inner {
+    padding-inline: 0.75rem;
+  }
+
+  .app-main {
+    padding-inline: 0.75rem;
+  }
+}
+
+/* サマリーカード */
+
+.study-summary-card {
+  background: linear-gradient(135deg, #2563eb, #6366f1);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  color: #f9fafb;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+  min-width: 200px;
+}
+
+.study-summary-card__label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.study-summary-card__value {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-top: 0.25rem;
+}
+
+.study-summary-card__unit {
+  font-size: 0.9rem;
+  margin-left: 0.15rem;
+}
+
+.study-summary-card__sub {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-top: 0.15rem;
+}
+
+/* ==============================
+   カード共通
+   ============================== */
+
+.mi-card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.mi-card__header {
+  padding: 0.9rem 1.25rem 0.25rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.mi-card__body {
+  padding: 1.25rem 1.25rem 1.3rem;
+}
+
+.mi-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.mi-card__subtitle {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.15rem;
+}
+
+/* ==============================
+   フォーム共通
+   ============================== */
+
+.mi-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.mi-field--full {
+  grid-column: 1 / -1;
+}
+
+.mi-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.mi-label__required {
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.mi-input,
+.mi-textarea {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.9rem;
+  color: #111827;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.mi-input:focus,
+.mi-textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px #2563eb22;
+}
+
+.mi-input--short {
+  max-width: 200px;
+}
+
+.mi-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.mi-error-message {
+  font-size: 0.75rem;
+  color: #b91c1c;
+}
+
+/* ==============================
+   ボタン共通
+   ============================== */
+
+.mi-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.mi-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* primary */
+
+.mi-button--primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+}
+
+.mi-button--primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+}
+
+/* ghost */
+
+.mi-button--ghost {
+  background-color: #ffffff;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.mi-button--ghost:hover:not(:disabled) {
+  background-color: #f9fafb;
+}
+
+/* danger */
+
+.mi-button--danger {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.mi-button--danger:hover:not(:disabled) {
+  background-color: #fecaca;
+}
+
+/* 小さいボタン */
+
+.mi-button--xs {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+}
+
+/* ==============================
+   フィルタフォーム
+   ============================== */
+
+.study-filter-form__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.mi-field--buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* ==============================
+   フォームレイアウト
+   ============================== */
+
+.study-form__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+}
+
+.study-form__actions {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ==============================
+   グラフエリア
+   ============================== */
+
+.study-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.study-chart-card {
+  min-height: 260px;
+}
+
+.study-chart__canvas-placeholder {
+  height: 210px;
+  border-radius: 0.75rem;
+  border: 1px dashed #d1d5db;
+  background: repeating-linear-gradient(
+    -45deg,
+    #f9fafb,
+    #f9fafb 8px,
+    #f3f4f6 8px,
+    #f3f4f6 16px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* レジェンド */
+
+.study-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.study-legend__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.study-legend__color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  margin-right: 0.4rem;
+  background-color: #9ca3af;
+}
+
+.study-legend__label {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  color: #374151;
+}
+
+.study-legend__value {
+  color: #4b5563;
+}
+
+/* ==============================
+   テーブル
+   ============================== */
+
+.study-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.study-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.study-table thead {
+  background-color: #f9fafb;
+}
+
+.study-table th,
+.study-table td {
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.study-table th {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.study-table__th--right,
+.study-table__cell--right {
+  text-align: right;
+}
+
+.study-table__th--actions,
+.study-table__cell--actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* バッジ */
+
+.study-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.55rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+/* ==============================
+   ページネーション
+   ============================== */
+
+.study-pagination {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: flex-end;
+}
+
+.study-pagination__link {
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: #374151;
+}
+
+.study-pagination__link--active {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+.study-pagination__link--disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ==============================
+   認証ページ（ログイン / 新規登録）
+   ============================== */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  background: radial-gradient(circle at top, #e0f2fe 0, #f3f4f6 45%, #f9fafb 100%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  border: 1px solid #e5e7eb;
+  padding: 1.75rem 1.75rem 1.5rem;
+}
+
+.auth-card__header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.auth-card__title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.35rem;
+}
+
+.auth-card__subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.auth-card__footer {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.auth-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+/* ==============================
+   レスポンシブ
+   ============================== */
+
+@media (max-width: 900px) {
+  .study-header {
+    flex-direction: column;
+  }
+
+  .study-header__summary {
+    justify-content: flex-start;
+  }
+
+  .study-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .study-form__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .study-page {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .study-container {
+    max-width: 100%;
+  }
+
+  .study-summary-card {
+    width: 100%;
+  }
+
+  .auth-card {
+    padding: 1.4rem 1.2rem 1.2rem;
+  }
+}
