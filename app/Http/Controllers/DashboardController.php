@@ -14,7 +14,6 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-        // とりあえず「今週」をデフォルト期間に（あとで?from, ?toに対応でもOK）
         $from = now()->startOfWeek();
         $to   = now()->endOfWeek();
 
