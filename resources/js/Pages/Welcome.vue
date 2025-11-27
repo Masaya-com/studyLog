@@ -22,7 +22,7 @@ defineProps({
           <h1 class="auth-card__title">学習ログダッシュボード</h1>
           <p class="auth-card__subtitle">
             毎日の学習時間を記録して、ダッシュボードで可視化できる
-            シンプルなWebアプリです。Laravel × Vue.js 練習用プロジェクト。
+            シンプルなWebアプリです。
           </p>
         </div>
 
